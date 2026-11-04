@@ -1,3 +1,5 @@
+export type RoutePoint = [number, number]
+
 export interface Location {
   name: string
   lat: number
@@ -17,4 +19,14 @@ export interface SunResult {
   travelBearing: number
   fromLocation: Location
   toLocation: Location
+}
+
+export interface Place {
+  name: string
+  lat: number
+  lon: number
+  category: string
+  distanceFromStartKm: number
+  distanceOffRouteKm: number
+  side: 'LEFT' | 'RIGHT'
 }

@@ -1,4 +1,15 @@
-import type { Location } from '../types'
+import type { Location, RoutePoint } from '../types'
+
+export async function getRouteGeometry(from: Location, to: Location): Promise<RoutePoint[]> {
+  const url = `https://router.project-osrm.org/route/v1/driving/${from.lon},${from.lat};${to.lon},${to.lat}?overview=full&geometries=geojson`
+  const response = await fetch(url)
+  const data = await response.json()
+  if (!data.routes || data.routes.length === 0) {
+    throw new Error('Route not found between these cities')
+  }
+  const coordinates: [number, number][] = data.routes[0].geometry.coordinates
+  return coordinates.map(([lon, lat]) => [lat, lon])
+}
 
 export async function getRouteBearing(from: Location, to: Location): Promise<number> {
   const url = `https://router.project-osrm.org/route/v1/driving/${from.lon},${from.lat};${to.lon},${to.lat}?overview=false`

@@ -6,7 +6,7 @@ export async function calculateSeatSide(from: Location, to: Location, travelDate
   const travelBearing = await getRouteBearing(from, to)
   const sunAzimuth = getSunAzimuth(from.lat, from.lon, travelDate)
   const relative = (sunAzimuth - travelBearing + 360) % 360
-  const sitSide = relative < 180 ? 'RIGHT' : 'LEFT'
+  const sitSide = relative < 180 ? 'LEFT' : 'RIGHT'
   return { sitSide, sunAzimuth, travelBearing, fromLocation: from, toLocation: to }
 }
 
