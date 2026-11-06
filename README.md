@@ -1,3 +1,11 @@
+# SunSeat
+
+Plan a journey between two places and see which side of the vehicle keeps you out of direct sun (or moon at night), with an optional map and notable spots along the route.
+
+Stack: React, TypeScript, Vite, Tailwind, Leaflet, suncalc.
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
